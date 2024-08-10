@@ -129,7 +129,7 @@ impl Player {
 
         let youtube_dl = YoutubeDl::new(reqwest::Client::new(), track.url.clone());
 
-        let audio_handle = driver.play_only_input(youtube_dl.into());
+        let audio_handle = driver.play_only_input(songbird::input::File::new("prorok iii.mp3").into());
         self.audio = Some(audio_handle);
 
         CommandHandler::track_started_playing(self, track, self.context.clone()).await;
